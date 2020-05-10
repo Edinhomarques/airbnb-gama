@@ -6,6 +6,27 @@ async function fetchApi(url){
  
 }
 fetchApi(url)
+    
+function filterByHost(){
+  event.preventDefault()
+  
+  const select = document.getElementById('selectHost')
+  const cards = document.querySelectorAll('.card')
+  const cardContent = document.querySelectorAll('.card__content')
+      
+  for(let i = 0; i < cards.length;  i++){
+    const property = cardContent[i].querySelector('#property')
+    const typeProperty = property.innerText.replace(/Tipo de propriedade:/, '') 
+        
+    if(typeProperty !== select.value && select.value !=''){
+      cards[i].classList.add('hidden')
+    } else {
+      cards[i].classList.remove('hidden')
+    }
+  }
+
+
+}
 
 function getCard(result){
   return `
