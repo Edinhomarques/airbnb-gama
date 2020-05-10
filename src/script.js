@@ -6,4 +6,24 @@ async function fetchApi(url){
  
 }
 fetchApi(url)
-  
+
+function getCard(result){
+  return `
+    ${
+      result.map((res, index) => `
+        <article class="card">
+          <figure class="card__post">
+            <img class="post__img " src=${res.photo} >
+          </figure>
+          <div class="card__content">
+            <span class="card__content--flex">Avaliação: 4.5</span>
+            <p>${res.name}</p>
+            <span class="card__content--size " id="property">Tipo de propriedade:${res.property_type}</span>     
+            <span class="card__content--size">Preço: R$${res.price}</span>
+                 
+          </div>
+        </article>
+      ` ).join(' ')
+    }
+  `
+}
